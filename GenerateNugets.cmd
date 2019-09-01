@@ -1,6 +1,6 @@
 @echo off
 
-:: to use you can call it like -> .\GenerateNugets.cmd "C:\Source\MyRepo" "C:\TMP" 
+:: to use you can call it like -> .\GenerateNugets.cmd "C:\Source\MyRepo" "C:\TMP" "Release"
 
 @setlocal enableextensions enabledelayedexpansion
 
@@ -32,7 +32,7 @@ for /l %%n in (0,1,9) do (
         set fN=%%f
         if "!fN:Test=nothing!"=="!fN!" (
             @echo "-->"%%f"<--"
-            dotnet pack %%f --include-symbols --configuration Release --verbosity q 
+            dotnet pack %%f --include-symbols --configuration %3 --verbosity q 
         )
     )
 )
@@ -41,6 +41,7 @@ for /l %%n in (0,1,9) do (
 @echo "PACKING FINISHED"
 @echo "-------------------------------------------------------------------------------"
 
+rd /s /q "%2/TempNuggets"
 mkdir %2"/TempNuggets/Symbols"
 mkdir %2"/TempNuggets/Nuggets"
 
