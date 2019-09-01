@@ -41,7 +41,7 @@ for /l %%n in (0,1,9) do (
 @echo "PACKING FINISHED"
 @echo "-------------------------------------------------------------------------------"
 
-rd /s /q "%2/TempNuggets"
+rd /s /q %2"/TempNuggets"
 mkdir %2"/TempNuggets/Symbols"
 mkdir %2"/TempNuggets/Nuggets"
 
